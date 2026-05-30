@@ -39,6 +39,21 @@ export const metadata: Metadata = {
       "事業資金から個人の資金繰り、消費者金融（アコム・アイフル等）の審査落ち対策やおまとめ相談まで。最適な資金調達方法を無料で個別提案。北千住駅近くで7月19日開催。",
     type: "website",
     locale: "ja_JP",
+    url: "https://polapath.jp",
+    images: [
+      {
+        url: "https://polapath.jp/logo.png",
+        width: 512,
+        height: 512,
+        alt: "POLAPATH Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "資金調達 個別相談会｜POLAPATH",
+    description: "最適な資金調達方法を無料で個別提案。北千住駅近くで7月19日開催。",
+    images: ["https://polapath.jp/logo.png"],
   },
   robots: {
     index: true,
