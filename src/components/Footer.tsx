@@ -49,7 +49,7 @@ export default function Footer() {
               お問い合わせ
             </h3>
             <a
-              href="mailto:contact@gyutanpafe.com"
+              href="mailto:contact@polapath.jp"
               className="inline-flex items-center gap-2 text-gray-400 hover:text-white text-sm transition-colors duration-300"
             >
               <svg
@@ -66,7 +66,7 @@ export default function Footer() {
                   d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                 />
               </svg>
-              contact@gyutanpafe.com
+              contact@polapath.jp
             </a>
           </div>
         </div>

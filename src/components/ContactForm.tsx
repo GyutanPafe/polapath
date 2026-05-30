@@ -156,7 +156,7 @@ export default function ContactForm() {
               {/* Web3Forms hidden inputs */}
               <input type="hidden" name="access_key" value="6c77f2be-034b-4b07-a9cc-f8dff2c9b66d" />
               <input type="hidden" name="subject" value="【POLAPATH】個別相談会のお申し込み" />
-              <input type="hidden" name="to" value="contact@gyutanpafe.com" />
+              <input type="hidden" name="to" value="contact@polapath.jp" />
               <input type="hidden" name="希望連絡方法" value={contactMethod === "phone" ? "電話" : contactMethod === "email" ? "メール" : "どちらでも"} />
               {/* ハニーポット */}
               <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />

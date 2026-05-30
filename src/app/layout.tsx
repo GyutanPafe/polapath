@@ -110,7 +110,7 @@ export default function RootLayout({
               organizer: {
                 "@type": "Organization",
                 name: "POLAPATH",
-                email: "contact@gyutanpafe.com",
+                email: "contact@polapath.jp",
               },
             }),
           }}
