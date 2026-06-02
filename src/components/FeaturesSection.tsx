@@ -221,10 +221,10 @@ export default function FeaturesSection() {
             まずは無料相談で、最適な資金調達方法を見つけましょう
           </p>
           <a
-            href="#cta"
+            href="#contact"
             className="cta-pulse inline-block rounded-full bg-cta px-10 py-4 text-base font-bold text-white shadow-lg transition-all duration-300 hover:bg-cta-hover hover:shadow-xl md:text-lg"
           >
-            無料で相談する
+            今すぐ無料で相談する
           </a>
         </div>
       </div>

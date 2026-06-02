@@ -42,7 +42,7 @@ export default function Header() {
           href="#contact"
           className="inline-flex items-center rounded-lg bg-cta px-4 py-2 text-xs font-bold text-white shadow-sm transition-all duration-200 hover:bg-cta-hover hover:shadow-md md:px-6 md:py-2.5 md:text-sm"
         >
-          無料相談を申し込む
+          無料で相談する
         </a>
       </div>
     </header>

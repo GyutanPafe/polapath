@@ -7,16 +7,16 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [showDetails, setShowDetails] = useState(false);
   const [contactMethod, setContactMethod] = useState<string>("phone");
+  const [consultationType, setConsultationType] = useState<string>("online");
   const [fieldErrors, setFieldErrors] = useState<{ name?: string; phone?: string; email?: string }>({});
-
-
 
   const validateForm = (name: string, phone: string, method: string, email: string): boolean => {
     const errors: { name?: string; phone?: string; email?: string } = {};
 
     if (!name.trim()) {
-      errors.name = "企業名またはお名前を入力してください";
+      errors.name = "お名前を入力してください";
     }
 
     if (!phone.trim()) {
@@ -92,13 +92,27 @@ export default function ContactForm() {
             id="contact-title"
             className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4"
           >
-            個別相談会に<span className="gradient-text">申し込む</span>
+            まずは気軽に<span className="gradient-text">相談してみる</span>
           </h2>
           <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-            まずはお気軽にご相談ください。
+            「こんなこと相談していいのかな…」と思っている方こそ大歓迎。
             <br className="hidden sm:inline" />
             あなたの状況に合った最適な方法を一緒に考えます。
           </p>
+        </div>
+
+        {/* 残り枠 + オンライン対応 */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
+          <span className="inline-flex items-center gap-2 rounded-full border border-cta/40 bg-cta/10 px-4 py-2 text-sm font-bold text-cta backdrop-blur-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cta opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-cta" />
+            </span>
+            7月19日（土）北千住で対面開催
+          </span>
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-4 py-2 text-xs font-medium text-accent-hover backdrop-blur-sm">
+            💻 オンライン相談も受付中
+          </span>
         </div>
 
         {/* 3つの安心宣言 */}
@@ -126,6 +140,7 @@ export default function ContactForm() {
           </div>
         </div>
 
+
         {/* フォームカード */}
         <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-10">
           {isSuccess ? (
@@ -144,10 +159,12 @@ export default function ContactForm() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-text-primary mb-3">
-                お申し込みありがとうございます
+                ご相談ありがとうございます
               </h3>
               <p className="text-text-secondary leading-relaxed">
                 担当者より折り返しご連絡いたします。
+                <br />
+                通常24時間以内にご連絡しますのでお待ちください。
               </p>
             </div>
           ) : (
@@ -155,20 +172,60 @@ export default function ContactForm() {
             <form onSubmit={handleSubmit} noValidate>
               {/* Web3Forms hidden inputs */}
               <input type="hidden" name="access_key" value="6c77f2be-034b-4b07-a9cc-f8dff2c9b66d" />
-              <input type="hidden" name="subject" value="【POLAPATH】個別相談会のお申し込み" />
+              <input type="hidden" name="subject" value="【POLAPATH】無料相談のお申し込み" />
               <input type="hidden" name="to" value="contact@polapath.jp" />
               <input type="hidden" name="希望連絡方法" value={contactMethod === "phone" ? "電話" : contactMethod === "email" ? "メール" : "どちらでも"} />
+              <input type="hidden" name="相談方法" value={consultationType === "offline" ? "対面（7/19 北千住）" : consultationType === "online" ? "オンライン" : "どちらでも"} />
               {/* ハニーポット */}
               <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
 
-              <div className="space-y-6">
-                {/* 企業名 / お名前 */}
+              {/* 入力の目安 */}
+              <div className="flex items-center justify-center gap-2 mb-6 text-sm text-text-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>入力はたった<strong className="text-accent">2項目</strong>、<strong className="text-accent">30秒</strong>で完了</span>
+              </div>
+
+              <div className="space-y-5">
+                {/* 相談方法の選択 */}
+                <div>
+                  <label className="block text-sm font-semibold text-text-primary mb-2">
+                    相談方法
+                    <span className="text-red-500 ml-1">*</span>
+                  </label>
+                  <div className="grid grid-cols-3 gap-2">
+                    <label className={`flex flex-col items-center justify-center gap-1 px-2 py-3 border rounded-lg text-xs md:text-sm font-semibold cursor-pointer transition-all duration-200 ${consultationType === "online" ? "border-accent bg-accent/5 text-accent ring-2 ring-accent/20" : "border-border bg-bg-alt text-text-primary hover:bg-border/10"}`}>
+                      <input type="radio" name="consultation_type" value="online" checked={consultationType === "online"} onChange={() => setConsultationType("online")} className="sr-only" />
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                      オンライン
+                    </label>
+                    <label className={`flex flex-col items-center justify-center gap-1 px-2 py-3 border rounded-lg text-xs md:text-sm font-semibold cursor-pointer transition-all duration-200 ${consultationType === "offline" ? "border-accent bg-accent/5 text-accent ring-2 ring-accent/20" : "border-border bg-bg-alt text-text-primary hover:bg-border/10"}`}>
+                      <input type="radio" name="consultation_type" value="offline" checked={consultationType === "offline"} onChange={() => setConsultationType("offline")} className="sr-only" />
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                      対面（7/19）
+                    </label>
+                    <label className={`flex flex-col items-center justify-center gap-1 px-2 py-3 border rounded-lg text-xs md:text-sm font-semibold cursor-pointer transition-all duration-200 ${consultationType === "either" ? "border-accent bg-accent/5 text-accent ring-2 ring-accent/20" : "border-border bg-bg-alt text-text-primary hover:bg-border/10"}`}>
+                      <input type="radio" name="consultation_type" value="either" checked={consultationType === "either"} onChange={() => setConsultationType("either")} className="sr-only" />
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                      どちらでも
+                    </label>
+                  </div>
+                  {consultationType === "online" && (
+                    <p className="mt-2 text-xs text-accent flex items-center gap-1">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                      Zoom等を使用し、全国どこからでも相談可能です
+                    </p>
+                  )}
+                </div>
+
+                {/* お名前 */}
                 <div>
                   <label
                     htmlFor="name"
                     className="block text-sm font-semibold text-text-primary mb-2"
                   >
-                    企業名 または お名前
+                    お名前（ニックネームでもOK）
                     <span className="text-red-500 ml-1">*</span>
                   </label>
                   <input
@@ -176,9 +233,9 @@ export default function ContactForm() {
                     id="name"
                     name="name"
                     required
-                    placeholder="例）株式会社〇〇 / 山田太郎"
+                    placeholder="例）山田太郎 / タロウ"
                     onChange={() => setFieldErrors((prev) => ({ ...prev, name: undefined }))}
-                    className={`w-full px-4 py-3 rounded-lg border bg-bg-alt text-text-primary placeholder:text-text-light focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow text-sm md:text-base ${
+                    className={`w-full px-4 py-3.5 rounded-lg border bg-bg-alt text-text-primary placeholder:text-text-light focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow text-sm md:text-base ${
                       fieldErrors.name ? "border-red-500" : "border-border"
                     }`}
                   />
@@ -203,7 +260,7 @@ export default function ContactForm() {
                     required
                     placeholder="例）090-1234-5678"
                     onChange={() => setFieldErrors((prev) => ({ ...prev, phone: undefined }))}
-                    className={`w-full px-4 py-3 rounded-lg border bg-bg-alt text-text-primary placeholder:text-text-light focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow text-sm md:text-base ${
+                    className={`w-full px-4 py-3.5 rounded-lg border bg-bg-alt text-text-primary placeholder:text-text-light focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow text-sm md:text-base ${
                       fieldErrors.phone ? "border-red-500" : "border-border"
                     }`}
                   />
@@ -212,100 +269,137 @@ export default function ContactForm() {
                   )}
                 </div>
 
-                {/* ご希望の連絡方法 */}
+                {/* 詳しく入力する（折りたたみ） */}
                 <div>
-                  <label className="block text-sm font-semibold text-text-primary mb-2">
-                    ご希望の連絡方法
-                    <span className="text-red-500 ml-1">*</span>
-                  </label>
-                  <div className="grid grid-cols-3 gap-2">
-                    <label className="flex items-center justify-center gap-1.5 px-2 py-3 border border-border rounded-lg bg-bg-alt text-xs md:text-sm font-semibold text-text-primary cursor-pointer hover:bg-border/10 transition-colors">
-                      <input
-                        type="radio"
-                        name="contact_method"
-                        value="phone"
-                        checked={contactMethod === "phone"}
-                        onChange={() => {
-                          setContactMethod("phone");
-                          setFieldErrors((prev) => ({ ...prev, email: undefined }));
-                        }}
-                        className="text-accent focus:ring-accent"
-                      />
-                      お電話
-                    </label>
-                    <label className="flex items-center justify-center gap-1.5 px-2 py-3 border border-border rounded-lg bg-bg-alt text-xs md:text-sm font-semibold text-text-primary cursor-pointer hover:bg-border/10 transition-colors">
-                      <input
-                        type="radio"
-                        name="contact_method"
-                        value="email"
-                        checked={contactMethod === "email"}
-                        onChange={() => setContactMethod("email")}
-                        className="text-accent focus:ring-accent"
-                      />
-                      メール
-                    </label>
-                    <label className="flex items-center justify-center gap-1.5 px-2 py-3 border border-border rounded-lg bg-bg-alt text-xs md:text-sm font-semibold text-text-primary cursor-pointer hover:bg-border/10 transition-colors">
-                      <input
-                        type="radio"
-                        name="contact_method"
-                        value="any"
-                        checked={contactMethod === "any"}
-                        onChange={() => {
-                          setContactMethod("any");
-                          setFieldErrors((prev) => ({ ...prev, email: undefined }));
-                        }}
-                        className="text-accent focus:ring-accent"
-                      />
-                      どちらでも
-                    </label>
+                  <button
+                    type="button"
+                    onClick={() => setShowDetails(!showDetails)}
+                    className="flex items-center gap-2 text-sm text-accent font-medium hover:text-accent-hover transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className={`w-4 h-4 transition-transform duration-300 ${showDetails ? "rotate-180" : ""}`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                    {showDetails ? "閉じる" : "詳しく入力する（任意）"}
+                  </button>
+
+                  <div className={`overflow-hidden transition-all duration-400 ${showDetails ? "max-h-[500px] mt-5 opacity-100" : "max-h-0 opacity-0"}`}>
+                    <div className="space-y-5">
+                      {/* ご希望の連絡方法 */}
+                      <div>
+                        <label className="block text-sm font-semibold text-text-primary mb-2">
+                          ご希望の連絡方法
+                        </label>
+                        <div className="grid grid-cols-3 gap-2">
+                          <label className={`flex items-center justify-center gap-1.5 px-2 py-3 border rounded-lg text-xs md:text-sm font-semibold cursor-pointer transition-all duration-200 ${
+                            contactMethod === "phone"
+                              ? "border-accent bg-accent/5 text-accent"
+                              : "border-border bg-bg-alt text-text-primary hover:bg-border/10"
+                          }`}>
+                            <input
+                              type="radio"
+                              name="contact_method"
+                              value="phone"
+                              checked={contactMethod === "phone"}
+                              onChange={() => {
+                                setContactMethod("phone");
+                                setFieldErrors((prev) => ({ ...prev, email: undefined }));
+                              }}
+                              className="sr-only"
+                            />
+                            📞 お電話
+                          </label>
+                          <label className={`flex items-center justify-center gap-1.5 px-2 py-3 border rounded-lg text-xs md:text-sm font-semibold cursor-pointer transition-all duration-200 ${
+                            contactMethod === "email"
+                              ? "border-accent bg-accent/5 text-accent"
+                              : "border-border bg-bg-alt text-text-primary hover:bg-border/10"
+                          }`}>
+                            <input
+                              type="radio"
+                              name="contact_method"
+                              value="email"
+                              checked={contactMethod === "email"}
+                              onChange={() => setContactMethod("email")}
+                              className="sr-only"
+                            />
+                            ✉️ メール
+                          </label>
+                          <label className={`flex items-center justify-center gap-1.5 px-2 py-3 border rounded-lg text-xs md:text-sm font-semibold cursor-pointer transition-all duration-200 ${
+                            contactMethod === "any"
+                              ? "border-accent bg-accent/5 text-accent"
+                              : "border-border bg-bg-alt text-text-primary hover:bg-border/10"
+                          }`}>
+                            <input
+                              type="radio"
+                              name="contact_method"
+                              value="any"
+                              checked={contactMethod === "any"}
+                              onChange={() => {
+                                setContactMethod("any");
+                                setFieldErrors((prev) => ({ ...prev, email: undefined }));
+                              }}
+                              className="sr-only"
+                            />
+                            どちらでも
+                          </label>
+                        </div>
+                      </div>
+
+                      {/* メールアドレス */}
+                      <div>
+                        <label
+                          htmlFor="email"
+                          className="block text-sm font-semibold text-text-primary mb-2"
+                        >
+                          メールアドレス
+                          {contactMethod === "email" ? (
+                            <span className="text-red-500 ml-1">*（必須）</span>
+                          ) : (
+                            <span className="text-text-light ml-2 font-normal text-xs">（任意）</span>
+                          )}
+                        </label>
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          placeholder={contactMethod === "email" ? "メール連絡をご希望のため必須です" : "例）example@email.com"}
+                          onChange={() => setFieldErrors((prev) => ({ ...prev, email: undefined }))}
+                          className={`w-full px-4 py-3 rounded-lg border bg-bg-alt text-text-primary placeholder:text-text-light focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow text-sm md:text-base ${
+                            fieldErrors.email ? "border-red-500" : "border-border"
+                          }`}
+                        />
+                        {fieldErrors.email && (
+                          <p className="text-red-500 text-xs mt-1">{fieldErrors.email}</p>
+                        )}
+                      </div>
+
+                      {/* 連絡事項（任意） */}
+                      <div>
+                        <label
+                          htmlFor="message"
+                          className="block text-sm font-semibold text-text-primary mb-2"
+                        >
+                          ご相談内容
+                          <span className="text-text-light ml-2 font-normal text-xs">（任意）</span>
+                        </label>
+                        <textarea
+                          id="message"
+                          name="message"
+                          rows={3}
+                          placeholder="例）オンラインでの相談を希望します / 銀行融資について相談したいです / 急ぎで資金が必要です"
+                          className="w-full px-4 py-3 rounded-lg border border-border bg-bg-alt text-text-primary placeholder:text-text-light focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow text-sm md:text-base resize-y"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                {/* メールアドレス */}
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-semibold text-text-primary mb-2"
-                  >
-                    メールアドレス
-                    {contactMethod === "email" ? (
-                      <span className="text-red-500 ml-1">*（必須）</span>
-                    ) : (
-                      <span className="text-text-light ml-2 font-normal text-xs">（任意）</span>
-                    )}
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder={contactMethod === "email" ? "メール連絡をご希望のため必須です" : "例）example@email.com"}
-                    onChange={() => setFieldErrors((prev) => ({ ...prev, email: undefined }))}
-                    className={`w-full px-4 py-3 rounded-lg border bg-bg-alt text-text-primary placeholder:text-text-light focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow text-sm md:text-base ${
-                      fieldErrors.email ? "border-red-500" : "border-border"
-                    }`}
-                  />
-                  {fieldErrors.email && (
-                    <p className="text-red-500 text-xs mt-1">{fieldErrors.email}</p>
-                  )}
-                </div>
-
-                {/* 連絡事項（任意） */}
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-semibold text-text-primary mb-2"
-                  >
-                    連絡事項
-                    <span className="text-text-light ml-2 font-normal text-xs">（任意）</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={3}
-                    placeholder="例）オンラインでの相談を希望します / 銀行融資について相談したいです"
-                    className="w-full px-4 py-3 rounded-lg border border-border bg-bg-alt text-text-primary placeholder:text-text-light focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow text-sm md:text-base resize-y"
-                  />
-                </div>
                 {/* エラーメッセージ */}
                 {errorMessage && (
                   <p className="text-red-500 text-sm text-center" role="alert">
@@ -333,9 +427,16 @@ export default function ContactForm() {
                       送信中...
                     </>
                   ) : (
-                    "無料相談に申し込む"
+                    "3分で無料相談を予約する"
                   )}
                 </button>
+
+                {/* 安心マイクロコピー */}
+                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[11px] text-text-light">
+                  <span>✓ しつこい勧誘なし</span>
+                  <span>✓ 秘密厳守</span>
+                  <span>✓ 相談だけでもOK</span>
+                </div>
 
                 {/* 注記 */}
                 <p className="text-text-light text-xs text-center leading-relaxed">

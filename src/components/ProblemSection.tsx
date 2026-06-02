@@ -166,7 +166,7 @@ export default function ProblemSection() {
               href="#contact"
               className="cta-pulse inline-block rounded-xl bg-cta px-8 py-3.5 text-sm font-bold text-white shadow-md transition-all duration-200 hover:bg-cta-hover hover:shadow-lg md:px-10 md:py-4 md:text-base"
             >
-              無料で相談してみる
+              無料で話を聞いてみる
             </a>
           </div>
         </div>
