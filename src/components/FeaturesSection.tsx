@@ -179,7 +179,7 @@ export default function FeaturesSection() {
           <h2 className="text-2xl font-bold text-text-primary md:text-3xl lg:text-4xl">
             POLAPATHが選ばれる理由
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-text-secondary md:text-lg">
+          <p className="mx-auto mt-4 max-w-2xl text-xs text-text-secondary sm:text-sm md:text-base lg:text-lg">
             画一的なセミナーではなく、一人ひとりに寄り添った個別相談だからこそできることがあります
           </p>
         </div>
@@ -207,7 +207,7 @@ export default function FeaturesSection() {
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm leading-relaxed text-text-secondary">
+                <p className="text-xs leading-relaxed text-text-secondary sm:text-sm">
                   {feature.description}
                 </p>
               </div>

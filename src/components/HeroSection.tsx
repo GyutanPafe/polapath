@@ -66,34 +66,38 @@ export default function HeroSection() {
           className="fade-in-up mb-6"
           style={{ transitionDelay: "0s" }}
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-cta/40 bg-cta/10 px-5 py-2 text-sm font-bold text-cta backdrop-blur-sm md:text-base">
-            <span className="relative flex h-2.5 w-2.5">
+          <span className="inline-flex items-center gap-2 rounded-full border border-cta/40 bg-cta/10 px-4 py-2 text-xs font-bold text-cta backdrop-blur-sm sm:px-5 sm:text-sm md:text-base">
+            <span className="relative flex h-2.5 w-2.5 shrink-0">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cta opacity-75" />
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-cta" />
             </span>
-            🔥 7月19日（土）北千住で対面開催 ｜ 残り枠わずか
+            🔥 7月19日（土）北千住で対面開催
+            <span className="hidden sm:inline">｜ 残り枠わずか</span>
           </span>
         </div>
 
         {/* メインコピー */}
         <h1
-          className="fade-in-up mb-6 text-2xl font-bold leading-relaxed text-white md:text-3xl md:leading-relaxed lg:text-5xl lg:leading-relaxed"
+          className="fade-in-up mb-6 text-xl font-bold leading-snug text-white sm:text-2xl sm:leading-relaxed md:text-3xl md:leading-relaxed lg:text-5xl lg:leading-relaxed"
           style={{ transitionDelay: "0.1s" }}
         >
           事業資金から個人の資金繰りまで
-          <br />
+          <br className="hidden sm:inline" />
           あなたに最適な資金調達を
-          <br />
+          <br className="hidden sm:inline" />
           <span className="gradient-text">サポートする個別相談会</span>
         </h1>
 
         {/* サブコピー */}
         <p
-          className="fade-in-up mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-gray-300 md:text-base md:leading-loose lg:text-lg"
+          className="fade-in-up mx-auto mb-8 max-w-2xl text-xs leading-relaxed text-gray-300 sm:text-sm md:text-base md:leading-loose lg:text-lg"
           style={{ transitionDelay: "0.3s" }}
         >
-          経営者様から個人の方まで、即日対応・秘密厳守で、一人ひとりの状況に合わせた最適なつなぎ資金・資金繰り改善プランをご提案
-          <br />画一的なセミナーではなく、あなただけの個別相談で今すぐ解決策を見つけます
+          経営者様から個人の方まで、即日対応・秘密厳守で、
+          <br className="hidden sm:inline" />
+          一人ひとりの状況に合わせた最適な資金繰り改善プランをご提案。
+          <br className="hidden sm:inline" />
+          あなただけの個別相談で今すぐ解決策を見つけます。
         </p>
 
         {/* バッジ */}

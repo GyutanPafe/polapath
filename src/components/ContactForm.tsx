@@ -90,11 +90,11 @@ export default function ContactForm() {
         <div className="text-center mb-10">
           <h2
             id="contact-title"
-            className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4"
           >
             まずは気軽に<span className="gradient-text">相談してみる</span>
           </h2>
-          <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+          <p className="text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed">
             「こんなこと相談していいのかな…」と思っている方こそ大歓迎。
             <br className="hidden sm:inline" />
             あなたの状況に合った最適な方法を一緒に考えます。

@@ -89,10 +89,10 @@ export default function TrustSection() {
           <p className="mb-2 text-sm font-semibold tracking-widest text-accent-hover uppercase">
             Why Choose Us
           </p>
-          <h2 className="text-2xl font-bold text-white md:text-3xl lg:text-4xl mb-4">
+          <h2 className="text-xl font-bold text-white sm:text-2xl md:text-3xl lg:text-4xl mb-4">
             こんな方でも<span className="gradient-text">資金調達に成功</span>しています
           </h2>
-          <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-400 text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
             一人ひとり状況は違います。だからこそ、個別相談で最適な道を見つけることが大切です。
           </p>
         </div>
@@ -112,7 +112,7 @@ export default function TrustSection() {
                 </div>
 
                 {/* ハイライトテキスト */}
-                <h3 className="text-lg md:text-xl font-bold text-white mb-4 leading-relaxed whitespace-pre-line">
+                <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-4 leading-snug whitespace-pre-line">
                   {voice.highlight}
                 </h3>
 
@@ -120,7 +120,7 @@ export default function TrustSection() {
                 <div className="mb-4 h-0.5 w-12 bg-gradient-to-r from-cta to-cta-hover rounded-full" />
 
                 {/* 説明テキスト */}
-                <p className="text-gray-400 text-sm leading-relaxed">
+                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
                   {voice.description}
                 </p>
               </div>
@@ -130,7 +130,7 @@ export default function TrustSection() {
 
         {/* 補足メッセージ */}
         <div className="mt-12 text-center fade-in-up" style={{ transitionDelay: "500ms" }}>
-          <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+          <p className="text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed">
             「自分の場合は難しいかも…」と思っている方こそ、
             <br className="hidden sm:inline" />
             まずは一度ご相談ください。一緒に最適な方法を探しましょう。

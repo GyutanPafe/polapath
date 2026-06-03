@@ -69,7 +69,7 @@ export default function ProfileSection() {
             </div>
 
             {/* 右: メッセージ */}
-            <div className="p-8 md:w-2/3 md:p-10">
+            <div className="p-6 sm:p-8 md:w-2/3 md:p-10">
               <blockquote className="relative">
                 <svg
                   className="absolute -top-2 -left-2 h-8 w-8 text-accent/20"
@@ -79,17 +79,13 @@ export default function ProfileSection() {
                 >
                   <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                 </svg>
-                <p className="relative text-text-secondary text-sm md:text-base leading-relaxed pl-6">
-                  資金繰りの悩みは、多くの方が「誰にも相談できない」と感じています。
-                  銀行に断られた、信用情報に不安がある、急いでいるけどどこに頼ればいいかわからない——
-                  そんな方が最初の一歩を踏み出せる場所を作りたい、という想いでPOLAPATHを立ち上げました。
+                <p className="relative text-text-secondary text-xs sm:text-sm md:text-base leading-relaxed pl-6">
+                  資金繰りの悩みは、多くの方が「誰にも相談できない」と感じています。銀行に断られた、信用情報に不安がある、急いでいるけどどこに頼ればいいかわからない——そんな方が最初の一歩を踏み出せる場所を作りたい、という想いでPOLAPATHを立ち上げました。
                 </p>
-                <p className="relative text-text-secondary text-sm md:text-base leading-relaxed pl-6 mt-4">
-                  私たちが大切にしているのは、<strong className="text-text-primary">「一人ひとりの状況に合った最適解を一緒に見つけること」</strong>です。
-                  画一的な提案ではなく、あなたの置かれた状況、ご希望、将来の計画をしっかりとお聞きした上で、
-                  本当に必要な資金調達の方法をご提案します。
+                <p className="relative text-text-secondary text-xs sm:text-sm md:text-base leading-relaxed pl-6 mt-3 sm:mt-4">
+                  私たちが大切にしているのは、<strong className="text-text-primary">「一人ひとりの状況に合った最適解を一緒に見つけること」</strong>です。あなたの置かれた状況、ご希望、将来の計画をしっかりとお聞きした上で、本当に必要な資金調達の方法をご提案します。
                 </p>
-                <p className="relative text-text-primary text-sm md:text-base leading-relaxed pl-6 mt-4 font-semibold">
+                <p className="relative text-text-primary text-xs sm:text-sm md:text-base leading-relaxed pl-6 mt-3 sm:mt-4 font-semibold">
                   「こんなこと相談していいのかな」と悩む必要はありません。
                   <br />
                   まずはお気軽にお話をお聞かせください。

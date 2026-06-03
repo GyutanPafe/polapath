@@ -152,15 +152,17 @@ export default function ProblemSection() {
         {/* 安心メッセージ */}
         <div className="fade-in-up mt-12 text-center md:mt-16">
           <div className="mx-auto max-w-2xl rounded-2xl bg-white px-6 py-8 shadow-lg md:px-10 md:py-10">
-            <p className="mb-3 text-xl font-bold text-primary md:text-2xl">
+            <p className="mb-3 text-lg font-bold text-primary sm:text-xl md:text-2xl">
               まずは一人で抱え込まず
               <br className="hidden sm:inline" />
-              <span className="gradient-text">専門家に相談</span><br></br>しませんか？
+              <span className="gradient-text">専門家に相談</span>しませんか？
             </p>
-            <p className="mb-6 text-sm leading-relaxed text-text-secondary md:text-base">
+            <p className="mb-6 text-xs leading-relaxed text-text-secondary sm:text-sm md:text-base">
               「こんなこと相談していいのかな…」と思っている方こそ
               <br className="hidden sm:inline" />
-              まずはお気軽にお話をお聞かせください<br></br>一緒に解決策を見つけましょう
+              まずはお気軽にお話をお聞かせください。
+              <br className="hidden sm:inline" />
+              一緒に解決策を見つけましょう。
             </p>
             <a
               href="#contact"

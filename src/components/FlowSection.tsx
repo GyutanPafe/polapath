@@ -133,7 +133,7 @@ export default function FlowSection() {
           <h2 className="text-2xl font-bold text-text-primary md:text-3xl lg:text-4xl">
             ご相談の流れ
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-text-secondary md:text-lg">
+          <p className="mx-auto mt-4 max-w-2xl text-xs text-text-secondary sm:text-sm md:text-base lg:text-lg">
             お申し込みから資金調達まで、4つのステップでサポートします
           </p>
         </div>
@@ -166,7 +166,7 @@ export default function FlowSection() {
               </h3>
 
               {/* Description */}
-              <p className="max-w-[200px] text-sm leading-relaxed text-text-secondary">
+              <p className="max-w-[240px] text-xs leading-relaxed text-text-secondary sm:text-sm">
                 {step.description}
               </p>
             </div>
